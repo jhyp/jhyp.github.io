@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+        本文件知识点：
+            属性选择器：顾名思义，就是通过属性找到某些元素
+
+
+        $(li[属性名])：
+                代表找到所有有这个属性的li标签
+
+        $(li[属性名=值])
+                代表找到所有属性=这个值的li标签
+
+        $(li[属性名^=值])
+                代表找到所有属性以这个值开头的li标签
+
+        $(li[属性名$=值])
+                代表找到所有属性以这个值结尾的li标签
+
+        $(li[属性名*=值])
+                代表找到所有属性有这个值的li标签
+
+     -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src='js/jquery-1.12.4.min.js'></script>
+
+    <script>
+        $(function () {
+            // 找到所有有class属性的li标签
+            // 匹配包含某个属性的元素
+            $('li[class]').css('border', '1px dashed black');
+
+            // 匹配到所有class的值，等于movie的li标签
+            // 属性 = 某个值
+            $('li[class=movie]').css('color', 'red');
+
+            // 如果属性值里有.，那么请给属性值加上单引号或者双引号
+            $('li[class="9.9"]').css('color', 'orange');
+
+            $('li[myBook]').css('border', '1px dashed yellow');
+
+            // 找到所有class属性值是以mo开头的
+            $('li[class^=mo]').css('backgroundColor', 'orange');
+
+            // 找到所有class属性值是以k结尾的
+            $('li[class$=k]').css('fontSize', '40px');
+
+            // 代表找到所有class的属性值中有o
+            $('li[class*=o]').css('color', 'blue');
+        })
+    </script>
+</head>
+
+<body>
+
+    <ul>
+        <li class='movie'>你的名字。</li>
+        <li class="dm">千与千寻</li>
+        <li class="book">解忧杂货铺</li>
+        <li class="lxj">火影忍者</li>
+        <li>龙猫</li>
+        <li class="9.9" myBook='ggngr'>菊一刀</li>
+        <li class="ofdsfdfds">xxxxxxxx</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+
+    slideToggle()：
+        切换下滑，原来没下滑我就下滑，原来已经下滑我就上滑
+
+    
+    html()：
+            可以获取它标签之间的内容，或者设置它标签之间的内容
+
+
+    parent() 获取到自身的父元素
+
+    children() 获取自己的所有子元素，括号里可以加标签来过滤
+
+ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            padding: 0;
+        }
+
+        ol {
+            display: none;
+        }
+
+        ul {
+            width: 100px;
+        }
+
+        li {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            background-color: red;
+            line-height: 30px;
+        }
+    </style>
+
+    <script src='js/jquery-1.12.4.min.js'></script>
+
+    <script>
+        $(function () {
+
+            $('a').click(function () {
+
+                // 先让所有ol都缩回
+                // $('ol').slideUp(500);
+                // 首先找到被点击的a标签的父元素（它所在的好友分组li标签），再找到这个父元素的兄弟元素（其他分组），然后再找到其他分组里的所有子元素中的ol子元素，然后让这个ol上滑
+                $(this).parent().siblings().children('ol').slideUp();
+
+                // 先保存原来的文字
+                var oldText = $(this).html();
+
+                // $(this).text();
+                $(this).html('⌛');
+                // $(this).siblings().slideDown();
+
+                // 切换下滑，如果之前没有滑出来，我就帮你下滑，如果之前有滑出来了，我就帮你上滑缩回去
+                // 注意：此时这个toggle里的this是ol,因为是ol调用的toggle方法
+                $(this).siblings().slideToggle(500, function () {
+
+                    $(this).siblings().html(oldText);
+                });
+
+
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <!-- ul>(li>a{好友分组$}+ol>li{好友$}*5)*4 -->
+
+    <ul class="container">
+        <li>
+            <a href="javascript:void(0)">好友分组1</a>
+            <ol>
+                <li>好友1</li>
+                <li>好友2</li>
+                <li>好友3</li>
+                <li>好友4</li>
+                <li>好友5</li>
+            </ol>
+        </li>
+        <li>
+            <a href="javascript:void(0)">好友分组2</a>
+            <ol>
+                <li>好友1</li>
+                <li>好友2</li>
+                <li>好友3</li>
+                <li>好友4</li>
+                <li>好友5</li>
+            </ol>
+        </li>
+        <li>
+            <a href="javascript:void(0)">好友分组3</a>
+            <ol>
+                <li>好友1</li>
+                <li>好友2</li>
+                <li>好友3</li>
+                <li>好友4</li>
+                <li>好友5</li>
+            </ol>
+        </li>
+        <li>
+            <a href="javascript:void(0)">好友分组4</a>
+            <ol>
+                <li>好友1</li>
+                <li>好友2</li>
+                <li>好友3</li>
+                <li>好友4</li>
+                <li>好友5</li>
+            </ol>
+        </li>
+    </ul>
+</body>
+
+</html>

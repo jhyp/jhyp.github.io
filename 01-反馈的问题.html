@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src='js/jquery-1.12.4.min.js'></script>
+
+    <script>
+        $(function () {
+            // 所有的input，并且包装成jQuery对象
+            // 找到所有的兄弟元素，返回的也是jQuery对象
+            // jQuery对象是一个特殊的数组，里面每个元素又是dom对象
+            $('input').siblings()[0].onclick = function () {
+
+            };
+
+            $('input').siblings()[0].click(function () {   //所有input（第0个和第1个），代表依次找第0个的兄弟（找到第1个），又找第1个的兄弟（第0个）
+                $('body').css('backgroundColor', 'pink')
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+    <input type="button" value="变粉" />
+    <input type="button" value="变黑" />
+
+
+</body>
+
+</html>
